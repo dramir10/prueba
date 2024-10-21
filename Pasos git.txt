@@ -1,0 +1,10 @@
+git config --global user.name "nombre"
+git config --global user.email "direccion"
+
+git init (inicializar)
+
+git status (ver estado del repositorio)
+git add .  (pasamos el/los archivos al staging area)
+git commit (i para insertar texto, ESC para salir, :wq graba y cierra)
+<Otra forma>
+git commit -m "Descripción"
