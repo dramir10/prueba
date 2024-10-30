@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clasificador de Edad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Clasificador de Edad</h2>
+    <div>
+        <input type="number" id="edadInput" placeholder="Ingresa tu edad">
+        <button onclick="clasificarEdad()">Clasificar</button>
+    </div>
+    <div id="resultado" class="resultado"></div>
+
+    <script>
+        function clasificarEdad() {
+            // Obtener el elemento input y resultado
+            const edadInput = document.getElementById('edadInput');
+            const resultadoDiv = document.getElementById('resultado');
+            
+            // Obtener el valor y convertirlo a número
+            let edad = parseInt(edadInput.value);
+
+            // Validar la entrada
+            if (edadInput.value.trim() === "") {
+                resultadoDiv.innerHTML = "Por favor, ingresa un valor.";
+                return;
+            }
+
+            if (isNaN(edad)) {
+                resultadoDiv.innerHTML = "Por favor, ingresa un número válido.";
+                return;
+            }
+
+            // Verificar rango de edad
+            if (edad < 0) {
+                resultadoDiv.innerHTML = "La edad no puede ser negativa.";
+            } else if (edad > 120) {
+                resultadoDiv.innerHTML = "La edad parece ser demasiado alta.";
+            } else {
+                // Clasificar según la edad
+                let mensaje;
+                if (edad < 13) {
+                    mensaje = "Eres un niño.";
+                } else if (edad >= 13 && edad <= 17) {
+                    mensaje = "Eres un adolescente.";
+                } else if (edad >= 18 && edad <= 64) {
+                    mensaje = "Eres un adulto.";
+                } else {
+                    mensaje = "Eres un adulto mayor.";
+                }
+                resultadoDiv.innerHTML = mensaje;
+            }
+        }
+    </script>
+</body>
+</html>
